@@ -101,7 +101,7 @@ function HomePage() {
               <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
-                value={scriptValue}
+                value={escapeHTML(scriptValue)}
                 onChange={handleChange}
                 sx={{ color: "white" }}
               />
@@ -130,7 +130,9 @@ function HomePage() {
                 <div className="post-type-link">
                   <a href="#">Security</a>
                 </div>
-                <div className="card-title">{post.postTitle}</div>
+                <div className="card-title">{escapeHTML(post.postTitle)}</div> 
+
+
                 <div className="card-details">
                   <ul>
                     <li>By</li>
@@ -141,7 +143,7 @@ function HomePage() {
                   </ul>
                 </div>
             {// eslint-disable-next-line
-                <div className="card-content" dangerouslySetInnerHTML={{ __html: post.postContent }} />}
+                <div className="card-content" dangerouslySetInnerHTML={escapeHTML(post.postContent)} 
               </div>
             </>
           ))}
